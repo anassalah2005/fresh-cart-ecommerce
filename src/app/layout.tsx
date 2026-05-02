@@ -33,31 +33,16 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} font-sans`}
-      suppressHydrationWarning
+      className={inter.className}
     >
-      <body className="min-h-screen bg-background text-foreground relative overflow-x-hidden">
-        {/* Background Decorative Elements */}
-        <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-          <div className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-primary/10 rounded-full blur-[120px] animate-pulse" />
-          <div className="absolute top-[20%] -right-[5%] w-[30%] h-[30%] bg-green-400/10 rounded-full blur-[100px] animate-float" />
-          <div className="absolute -bottom-[10%] left-[20%] w-[50%] h-[50%] bg-primary/5 rounded-full blur-[150px]" />
-        </div>
-
-        <Toaster position="top-center" richColors />
+      <body className="min-h-full flex flex-col">
+        <Toaster />
         <Navbar />
         
-        <main className="flex-1">
-          {children}
-        </main>
+        {children}
         
-        {/* Simple Footer Placeholder or real footer could go here */}
-        <footer className="py-10 border-t border-border mt-20 glass dark:glass-dark">
-          <div className="max-w-7xl mx-auto px-4 text-center text-muted-foreground text-sm">
-            © 2026 FreshCart E-Commerce. All rights reserved.
-          </div>
-        </footer>
-      </body>
+        
+        </body>
     </html>
   );
 }

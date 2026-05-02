@@ -32,17 +32,15 @@ export default function Navbar() {
 
   return (
     // ✅ wrapper div handles full-width layout, position relative for dropdown
-    <div className="relative w-full flex items-center justify-between p-4 border-b">
+    <div className="relative w-full flex items-center justify-between p-4">
 
       {/* Logo */}
-      <div>
-        <Link href="/">
-          <img className="w-64" src={navLogo.src} alt="logo" />
-        </Link>
-      </div>
+      <Link href="/">
+        <img className="w-48 md:w-64" src={navLogo.src} alt="logo" />
+      </Link>
 
       {/* Search Input */}
-      <div className="w-2/3 mx-5">
+      <div className="hidden md:block w-1/3 lg:w-2/3 mx-5">
         <div className="relative">
           <input
             type="text"
@@ -56,23 +54,23 @@ export default function Navbar() {
       </div>
 
       {/* ✅ NavigationMenu only wraps the nav links now */}
-      <NavigationMenu>
+      <NavigationMenu className="hidden lg:flex">
         <NavigationMenuList>
 
           <NavigationMenuItem>
             <NavigationMenuLink asChild>
-              <Link href="/" className="px-2 font-medium">home</Link>
+              <Link href="/" className="px-3 py-2 text-sm font-medium hover:text-green-600 transition">home</Link>
             </NavigationMenuLink>
           </NavigationMenuItem>
 
           <NavigationMenuItem>
             <NavigationMenuLink asChild>
-              <Link href="/shop" className="px-2 font-medium">shop</Link>
+              <Link href="/shop" className="px-3 py-2 text-sm font-medium hover:text-green-600 transition">shop</Link>
             </NavigationMenuLink>
           </NavigationMenuItem>
 
           <NavigationMenuItem>
-            <NavigationMenuTrigger className="font-medium">categories</NavigationMenuTrigger>
+            <NavigationMenuTrigger>categories</NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="w-96 p-4">
                 <ListItem href="/categories" title="All Categories">
@@ -84,7 +82,7 @@ export default function Navbar() {
 
           <NavigationMenuItem>
             <NavigationMenuLink asChild>
-              <Link href="/brands" className="px-2 font-medium">brands</Link>
+              <Link href="/brands" className="px-3 py-2 text-sm font-medium hover:text-green-600 transition">brands</Link>
             </NavigationMenuLink>
           </NavigationMenuItem>
 
@@ -97,23 +95,23 @@ export default function Navbar() {
       </NavigationMenu>
 
       {/* Icons & Actions — outside NavigationMenu entirely */}
-      <div className="flex items-center space-x-4">
+      <div className="flex items-center space-x-2 md:space-x-4">
 
-        <div className="flex items-center space-x-3 pr-4 border-r border-black">
-          <div className="bg-[#cfefd9] p-3 rounded-full">
-            <TfiHeadphoneAlt className="text-[#16A34A] text-xl" />
+        <div className="hidden sm:flex items-center space-x-3 pr-4 border-r border-gray-200">
+          <div className="bg-[#cfefd9] p-2 md:p-3 rounded-full">
+             <TfiHeadphoneAlt className="text-[#16A34A] text-lg md:text-xl" />
           </div>
-          <span className="text-gray-400 leading-tight">
+          <span className="text-gray-400 text-xs md:text-sm leading-tight">
             Support <br />
             <span className="text-black font-semibold">24/7</span>
           </span>
         </div>
 
-        <div className="pl-4">
-          <Link className="font-bold text-gray-500 text-xl" href="/wishlist"><FaHeart /></Link>
+        <div className="pl-2">
+          <Link className="font-bold text-gray-500 text-xl hover:text-green-600 transition" href="/wishlist"><FaHeart /></Link>
         </div>
-        <div className="pl-4 relative">
-          <Link className="font-bold text-gray-500 text-xl" href="/cart">
+        <div className="pl-2 relative">
+          <Link className="font-bold text-gray-500 text-xl hover:text-green-600 transition" href="/cart">
             <FaShoppingCart />
             {numOfCartItems > 0 && (
               <span className="absolute -top-2 -right-2 bg-green-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">
@@ -125,7 +123,7 @@ export default function Navbar() {
         
         {token ? (
           <div className="flex items-center space-x-4">
-            <Link className="font-bold text-gray-500 text-xl" href="/allorders"><FaIdCard /></Link>
+            <Link className="font-bold text-gray-500 text-xl hover:text-green-600 transition" href="/allorders"><FaIdCard /></Link>
             <button 
               onClick={() => {
                 logout()
@@ -138,10 +136,8 @@ export default function Navbar() {
           </div>
         ) : (
           <div className="flex items-center space-x-2">
-            <Link href="/login" className="text-gray-600 font-semibold text-sm">Login</Link>
-            <div className="bg-green-600 flex items-center justify-center rounded-2xl w-24 h-8">
-              <Link href="/register" className="text-white font-semibold text-sm text-center">Sign Up</Link>
-            </div>
+            <Link href="/login" className="text-gray-600 font-semibold text-xs md:text-sm hover:text-green-600">Login</Link>
+            <Link href="/register" className="bg-green-600 hover:bg-green-700 text-white font-semibold text-xs md:text-sm px-3 md:px-4 py-1.5 md:py-2 rounded-lg transition">Sign Up</Link>
           </div>
         )}
 

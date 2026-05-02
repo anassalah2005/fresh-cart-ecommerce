@@ -33,18 +33,18 @@ const features = [
 
 export default function FeaturesBar() {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-6 md:px-10 py-10 bg-transparent">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 px-6 py-6 bg-gray-50">
       {features.map((feature, i) => (
         <div
           key={i}
-          className="glass dark:glass-dark flex items-center gap-5 rounded-3xl px-6 py-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl border border-white/20 group"
+          className="flex items-center gap-4 bg-white border border-gray-100 rounded-2xl px-5 py-4 shadow-sm"
         >
-          <div className={`${feature.bgColor} p-4 rounded-2xl flex-shrink-0 group-hover:scale-110 transition-transform`}>
+          <div className={`${feature.bgColor} p-3 rounded-xl flex-shrink-0`}>
             {feature.icon}
           </div>
           <div>
-            <p className="font-extrabold text-foreground text-sm uppercase tracking-tight">{feature.title}</p>
-            <p className="text-muted-foreground text-[11px] font-medium leading-relaxed">{feature.subtitle}</p>
+            <p className="font-bold text-gray-800 text-sm">{feature.title}</p>
+            <p className="text-gray-500 text-xs">{feature.subtitle}</p>
           </div>
         </div>
       ))}
