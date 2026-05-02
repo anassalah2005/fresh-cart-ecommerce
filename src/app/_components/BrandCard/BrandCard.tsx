@@ -5,7 +5,7 @@ import Link from "next/link";
 export function BrandCard({ brand }: { brand: Brand })
  {
 
-
+  console.log(brand, "brand");
   return (
     <Link href={`/brands/${brand._id}`} className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 cursor-pointer overflow-hidden">
       {/* Logo Area */}

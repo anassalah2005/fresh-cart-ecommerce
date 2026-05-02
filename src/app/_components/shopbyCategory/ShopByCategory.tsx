@@ -1,4 +1,4 @@
-import { getAllCategories } from '@/servi/category';
+import { getAllCategories } from '@/services/category';
 import { categorytype } from '@/types/product.type';
 import Link from 'next/link';
 

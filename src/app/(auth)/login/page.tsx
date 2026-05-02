@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input"
 import { toast } from "sonner"
 import { useRouter } from "next/navigation"
 import { loginAction } from "./login.action"
+import { useUserStore } from "@/hooks/useUserStore"
 
 
 // ── Zod schema ────────────────────────────────────────────────────────────────
@@ -70,6 +71,9 @@ export default function login() {
 
 
 
+  const setToken = useUserStore((state) => state.setToken)
+  const setUser = useUserStore((state) => state.setUser)
+
   async function onSubmit(values: FormData) {
     console.log("values", values)
     
@@ -77,6 +81,8 @@ export default function login() {
     
 
     if (data.message === "success") {
+        setToken(data.token)
+        setUser(data.user)
         toast.success("Login successful", {
           position: "top-center",
           richColors: true,
@@ -238,6 +244,11 @@ export default function login() {
                   <p className="text-xs text-gray-400 mt-0.5">
                     Must be at least 8 characters with numbers and symbols
                   </p>
+                  <div className="flex justify-end">
+                    <a href="/forgot-password" title="Forgot Password" id="forgot-password-link" className="text-sm text-green-500 hover:underline font-medium">
+                      Forgot Password?
+                    </a>
+                  </div>
                   {fieldState.invalid && (
                     <FieldError errors={[fieldState.error]} />
                   )}

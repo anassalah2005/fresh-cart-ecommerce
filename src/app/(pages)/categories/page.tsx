@@ -1,9 +1,9 @@
-import React from 'react'
+import ShopByCategory from "@/app/_components/shopbyCategory/ShopByCategory";
 
-export default function page() {
+export default function categories() {
   return (
     <div>
-      <h1>Categories</h1>
+      <ShopByCategory/>
     </div>
   )
 }

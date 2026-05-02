@@ -1,8 +1,9 @@
-import { getProductById } from '@/servi/product'
+import { getProductById } from '@/services/product'
 import { FiShoppingCart, FiHeart, FiShare2, FiZap } from 'react-icons/fi'
 import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa'
 import { MdLocalShipping, MdRefresh, MdSecurity } from 'react-icons/md'
 import { Product } from '@/types/product.type'
+import ProductActions from './_components/ProductActions'
 
 
 function StarRating({ rating }: { rating: number }) {
@@ -120,37 +121,12 @@ export default async function ProductPage({ params }: { params: { id: string } }
                 </p>
               )}
 
-              {/* Quantity + Total */}
-              <div className="flex items-center justify-between border-t border-gray-100 pt-4">
-                <div className="flex items-center gap-3">
-                  <span className="text-sm text-gray-500 font-medium">Quantity</span>
-                  <div className="flex items-center border border-gray-200 rounded-lg overflow-hidden">
-                    <button className="w-9 h-9 flex items-center justify-center text-gray-500 hover:bg-gray-50 transition-colors text-lg font-medium">
-                      −
-                    </button>
-                    <span className="w-10 text-center text-sm font-semibold text-gray-800">1</span>
-                    <button className="w-9 h-9 flex items-center justify-center text-gray-500 hover:bg-gray-50 transition-colors text-lg font-medium">
-                      +
-                    </button>
-                  </div>
-                </div>
-                <div className="text-right">
-                  <p className="text-xs text-gray-400">Total Price</p>
-                  <p className="text-lg font-bold text-emerald-600">{displayPrice}.00 EGP</p>
-                </div>
-              </div>
-
-              {/* CTA Buttons */}
-              <div className="flex gap-3">
-                <button className="flex-1 flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-3 rounded-xl transition-colors text-sm shadow-sm shadow-emerald-200">
-                  <FiShoppingCart className="text-base" />
-                  Add to Cart
-                </button>
-                <button className="flex-1 flex items-center justify-center gap-2 bg-gray-900 hover:bg-gray-800 text-white font-semibold py-3 rounded-xl transition-colors text-sm">
-                  <FiZap className="text-base" />
-                  Buy Now
-                </button>
-              </div>
+              {/* Quantity, Total and Buttons Component */}
+              <ProductActions 
+                productId={product._id} 
+                price={displayPrice} 
+                stock={product.quantity || 0} 
+              />
 
               {/* Wishlist + Share */}
               <div className="flex gap-3">

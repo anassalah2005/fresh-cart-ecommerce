@@ -1,10 +1,10 @@
 import Cardstyle from '@/app/_components/CardStyle/cardstyle'
 import { Product } from '@/types/product.type' 
-import { getAllProducts } from '@/servi/product';
+import { getAllProducts } from '@/services/product';
 import image1 from '@/assets/images/19b048dcec278f9d9c89514b670e0d9f8909f6dc.png'
 import MySlider from './_components/mySlider/Myslider';
 import FeaturesBar from './_components/fetures/fetures';
-import ShopByCategory from './_components/shopbycat/ShopByCategory';
+import ShopByCategory from './_components/shopbyCategory/ShopByCategory';
 import PromoBanners from './_components/promoBannerCard/PromoBannerCard';
 
 const slides = [
@@ -42,7 +42,7 @@ export default async function Page() {
 const images = [image1.src, image1.src, image1.src];
 
 
-  const products = await getAllProducts();
+  const products = await getAllProducts ();
   console.log(products);
 
   return (
